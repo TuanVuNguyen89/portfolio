@@ -126,6 +126,41 @@ export async function deleteExperience(id: number) {
   return res.json();
 }
 
+// Education
+export async function fetchEducation() {
+  const res = await fetch(`${API_URL}/education`, { credentials: 'include' });
+  if (!res.ok) throw new Error("Failed to fetch education");
+  return res.json();
+}
+
+export async function createEducation(data: any) {
+  const res = await fetch(`${API_URL}/education`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+    credentials: 'include'
+  });
+  if (!res.ok) throw new Error("Failed to create education");
+  return res.json();
+}
+
+export async function updateEducation(id: number, data: any) {
+  const res = await fetch(`${API_URL}/education/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+    credentials: 'include'
+  });
+  if (!res.ok) throw new Error("Failed to update education");
+  return res.json();
+}
+
+export async function deleteEducation(id: number) {
+  const res = await fetch(`${API_URL}/education/${id}`, { method: 'DELETE', credentials: 'include' });
+  if (!res.ok) throw new Error("Failed to delete education");
+  return res.json();
+}
+
 // Messages
 export async function sendMessage(data: { name: string; email: string; message: string }) {
   const res = await fetch(`${API_URL}/messages`, {

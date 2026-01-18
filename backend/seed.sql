@@ -57,23 +57,46 @@ INSERT INTO experience (company, role, start_date, end_date, description, locati
   'Ha Noi'
 );
 
--- Projects
-INSERT INTO project (title, description, tech_stack, live_url, repo_url, content) VALUES 
+-- Education
+INSERT INTO education (institution, major, start_date, end_date, description, achievements) VALUES 
 (
-  'Facebook Agents', 
+  'University of FPT',
+  'Software Engineering',
+  'Sept 2023',
+  'now',
+  'GPA: 3.4/4.0\nAwarded a **100% scholarship** covering the entirety of the study period and actively participated in various university activities.',
+  '["Participated in the ICPC Asia-Pacific Regional Contest 2023", "Third Prize in the ICPC National Round 2024", "First Prize in the ICPC Northern Regional Round 2024", "Second Prize in the Specialized Informatics Olympiad 2023", "Third Prize in the Super Cup Olympiad 2024"]'
+),
+(
+  'Bien Hoa high school for the gifted',
+  'Infomatics',
+  'Sep 2020',
+  'May 2023',
+  'National Consolation Prize in 2022 and 2023\nFirst Prize at the Provincial Level in 2023',
+  NULL
+);
+
+-- Projects
+INSERT INTO project (title, description, tech_stack, live_url, repo_url, content, achievement, images) VALUES 
+(
+  'Facebook Agents - VPBank Hackathon 2025', 
   'Facebook Messenger chatbot system with seamless handoff between AI and human agents.',
   '["FastAPI", "Elasticsearch", "NLP", "Facebook Messenger API"]',
   '#',
   'https://github.com/PiVKT/rag_chatbot',
-  'Built a Facebook Messenger chatbot system with seamless handoff between AI and human agents. Applied RAG (Retrieval-Augmented Generation) to deliver context-aware responses using real-time data. Implemented intent recognition and conversation monitoring.'
+  'A Facebook Messenger chatbot system with seamless AI-to-human agent handoff.\nApplied RAG (Retrieval-Augmented Generation) for context-aware responses from real-time data.\nImplemented intent recognition and conversation monitoring for customer support.',
+  'Achieved Top 20 in VPBank Hackathon 2025',
+  '[]'
 ),
 (
-  'Open MSocial', 
+  'Open MSocial - Microservices Social Media Platform', 
   'Microservices Social Media Platform',
   '["Java 21", "Node.js", "Docker", "MySQL", "MongoDB", "Cloudinary", "Kafka"]',
   '#',
   'https://github.com/TuanVuNguyen89/open-msocial',
-  'Designed and implemented a microservices-based social media platform. Built 8 core services: API Gateway, Identity, Profile, Post, Comment, Media, Notification, and Web App. Implemented asynchronous communication using Kafka.'
+  'A microservices-based social media platform comprising 8 core services: API Gateway, Identity, Profile, Post, Comment, Media, Notification, and Web App.\nUses Kafka for asynchronous communication for notifications and events.\nServices are deployed and managed using Docker Compose.',
+  NULL,
+  '[]'
 ),
 (
   'FU Online Judge', 
@@ -81,5 +104,7 @@ INSERT INTO project (title, description, tech_stack, live_url, repo_url, content
   '["ASP.NET", "ReactJS", "PostgreSQL", "Azure"]',
   '#',
   'https://github.com/TuanVuNguyen89/online-judge-fuoj',
-  'Developed an online code judging system supporting submissions and contests. Designed backend APIs for code execution, evaluation, and contest scheduling.'
+  'An online code judging system for FPT students, supporting submissions and contests.\nIncludes backend APIs for code execution, evaluation, and contest scheduling.',
+  NULL,
+  '[]'
 );

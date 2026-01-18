@@ -298,36 +298,47 @@ body::after {
   font-family: var(--font-mono);
 }
 
-/* Projects - Code Block Style */
+/* Projects - Flip Card Style */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
 }
 
-.project-card {
+.project-card-wrapper {
+  perspective: 1000px;
+  height: 100%;
+  min-height: 400px;
+  cursor: pointer;
+}
+
+.project-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.project-card-wrapper.flipped .project-card-inner {
+  transform: rotateY(180deg);
+}
+
+.project-card-front,
+.project-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   display: flex;
   flex-direction: column;
-  height: 100%;
   padding: 2rem;
-  position: relative;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
-.project-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, var(--terminal-green), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.project-card:hover::after {
-  opacity: 1;
+.project-card-back {
+  transform: rotateY(180deg);
 }
 
 .project-content {
@@ -404,6 +415,148 @@ body::after {
 .tag:hover {
   background: rgba(0, 217, 255, 0.2);
   border-color: var(--terminal-cyan);
+  transform: translateY(-2px);
+}
+
+.flip-hint {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--terminal-border);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  opacity: 0.7;
+}
+
+.flip-hint span {
+  color: var(--terminal-cyan);
+}
+
+/* Project Details (Back Side) */
+.project-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.project-details-title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--terminal-green);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--terminal-border);
+}
+
+.project-details-content {
+  flex: 1;
+}
+
+.detail-line {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0.75rem 0;
+  padding-left: 1rem;
+  position: relative;
+  font-family: var(--font-mono);
+  line-height: 1.7;
+}
+
+.detail-line::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--terminal-cyan);
+}
+
+.details-section-title {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.95rem;
+  color: var(--terminal-green);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.project-details-tech {
+  margin-top: 1rem;
+}
+
+.project-achievement {
+  padding: 1rem;
+  background: rgba(0, 255, 65, 0.05);
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  border-radius: 4px;
+}
+
+.achievement-text {
+  margin: 0;
+  color: var(--terminal-green);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.project-images {
+  margin-top: 1rem;
+}
+
+.images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid var(--terminal-border);
+  transition: all 0.3s;
+  object-fit: cover;
+}
+
+.project-image:hover {
+  border-color: var(--terminal-green);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+  transform: scale(1.05);
+}
+
+.project-details-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--terminal-border);
+}
+
+.detail-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--terminal-cyan);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  border-radius: 4px;
+  transition: all 0.2s;
+  background: rgba(0, 217, 255, 0.05);
+}
+
+.detail-link:hover {
+  color: var(--terminal-green);
+  border-color: var(--terminal-green);
+  background: rgba(0, 255, 65, 0.1);
   transform: translateY(-2px);
 }
 
@@ -506,6 +659,117 @@ body::after {
 }
 
 .exp-description p::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--terminal-cyan);
+}
+
+/* Education Section */
+.education-section {
+  margin-top: 2rem;
+}
+
+.edu-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.edu-header {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.edu-institution {
+  font-size: 1.3rem;
+  color: var(--terminal-green);
+  margin: 0;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.edu-major {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-family: var(--font-mono);
+}
+
+.edu-date-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--terminal-cyan);
+  background: rgba(0, 217, 255, 0.1);
+  border: 1px solid var(--terminal-cyan);
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.edu-description {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-family: var(--font-mono);
+  margin-bottom: 1rem;
+}
+
+.edu-detail-line {
+  margin: 0.5rem 0;
+  position: relative;
+  padding-left: 1rem;
+  white-space: normal;
+}
+
+.edu-detail-line::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--terminal-cyan);
+}
+
+.edu-achievements {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--terminal-border);
+}
+
+.achievements-title {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  color: var(--terminal-green);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.achievements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.achievement-item {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  line-height: 1.7;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.achievement-item::before {
   content: '→';
   position: absolute;
   left: 0;

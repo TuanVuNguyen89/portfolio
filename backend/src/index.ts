@@ -5,6 +5,7 @@ import profileRoute from './routes/profile'
 import skillsRoute from './routes/skills'
 import projectsRoute from './routes/projects'
 import experienceRoute from './routes/experience'
+import educationRoute from './routes/education'
 import messagesRoute from './routes/messages'
 
 type Bindings = {
@@ -27,6 +28,7 @@ app.route('/api/profile', profileRoute)
 app.route('/api/skills', skillsRoute)
 app.route('/api/projects', projectsRoute)
 app.route('/api/experience', experienceRoute)
+app.route('/api/education', educationRoute)
 app.route('/api/messages', messagesRoute)
 
 app.on(['POST', 'GET'], '/api/auth/*', (c) => {

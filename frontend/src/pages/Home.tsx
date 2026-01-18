@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import { fetchProfile, fetchSkills, fetchProjects, fetchExperience } from '../lib/api'
+import { fetchProfile, fetchSkills, fetchProjects, fetchExperience, fetchEducation } from '../lib/api'
 import Hero from '../components/Hero'
 import Experience from '../components/Experience'
 import Projects from '../components/Projects'
+import Education from '../components/Education'
 import Skills from '../components/Skills'
 import CherryBlossomEffect from '../components/CherryBlossomEffect'
 import BackgroundVisuals from '../components/BackgroundVisuals'
@@ -15,13 +16,14 @@ export default function Home() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [profile, skills, experiences, projects] = await Promise.all([
+        const [profile, skills, experiences, projects, educations] = await Promise.all([
           fetchProfile(),
           fetchSkills(),
           fetchExperience(),
-          fetchProjects()
+          fetchProjects(),
+          fetchEducation()
         ]);
-        setData({ profile, skills, experiences, projects });
+        setData({ profile, skills, experiences, projects, educations });
       } catch (err) {
         console.error(err);
       } finally {
@@ -34,7 +36,7 @@ export default function Home() {
   if (loading) return <div className="loading-screen"><div className="loader"></div></div>
   if (!data || !data.profile) return <div className="error-screen">Failed to load data. Please ensure backend is running.</div>
 
-  const { profile, skills, experiences, projects } = data
+  const { profile, skills, experiences, projects, educations } = data
 
   return (
     <>
@@ -43,9 +45,10 @@ export default function Home() {
       <div className="app-container">
         <main className="main-content">
           <Hero profile={profile} />
-          <Skills skills={skills} />
           <Experience experiences={experiences} />
           <Projects projects={projects} />
+          <Education educations={educations} />
+          <Skills skills={skills} />
         </main>
         
         <footer className="footer">

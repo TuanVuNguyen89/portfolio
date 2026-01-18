@@ -4,11 +4,12 @@ import { authClient } from "../lib/auth-client";
 import ProfileManager from "../components/admin/ProfileManager";
 import ExperienceManager from "../components/admin/ExperienceManager";
 import ProjectsManager from "../components/admin/ProjectsManager";
+import EducationManager from "../components/admin/EducationManager";
 
 export default function Admin() {
   const navigate = useNavigate();
   const { data: session } = authClient.useSession();
-  const [activeTab, setActiveTab] = useState<'profile' | 'experience' | 'projects'>('profile');
+  const [activeTab, setActiveTab] = useState<'profile' | 'experience' | 'projects' | 'education'>('profile');
 
   const handleLogout = async () => {
     await authClient.signOut();
@@ -48,11 +49,18 @@ export default function Admin() {
         >
             Projects
         </button>
+        <button 
+            onClick={() => setActiveTab('education')}
+            style={{ background: activeTab === 'education' ? 'var(--accent)' : 'var(--bg-secondary)', color: 'white' }}
+        >
+            Education
+        </button>
       </div>
       
       {activeTab === 'profile' && <ProfileManager />}
       {activeTab === 'experience' && <ExperienceManager />}
       {activeTab === 'projects' && <ProjectsManager />}
+      {activeTab === 'education' && <EducationManager />}
     </div>
   );
 }

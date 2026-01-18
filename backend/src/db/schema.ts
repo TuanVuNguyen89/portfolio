@@ -82,6 +82,16 @@ export const experience = sqliteTable("experience", {
 	location: text("location")
 });
 
+export const education = sqliteTable("education", {
+	id: int("id").primaryKey({ autoIncrement: true }),
+	institution: text("institution").notNull(),
+	major: text("major").notNull(),
+	startDate: text("start_date").notNull(), // YYYY-MM or "Sept 2023"
+	endDate: text("end_date"), // YYYY-MM or "Present" or "now"
+	description: text("description"), // Markdown or bullet points (GPA, scholarship, etc.)
+	achievements: text("achievements") // JSON array or text for competitive programming achievements
+});
+
 export const project = sqliteTable("project", {
 	id: int("id").primaryKey({ autoIncrement: true }),
 	title: text("title").notNull(),
@@ -90,7 +100,9 @@ export const project = sqliteTable("project", {
 	liveUrl: text("live_url"),
 	repoUrl: text("repo_url"),
 	techStack: text("tech_stack"), // JSON string or comma-separated
-	content: text("content") // Detailed markdown content
+	content: text("content"), // Detailed markdown content
+	achievement: text("achievement"), // Achievement text (e.g., "Top 20 in VPBank Hackathon 2025")
+	images: text("images") // JSON array of image URLs for project details
 });
 
 export const message = sqliteTable("message", {
