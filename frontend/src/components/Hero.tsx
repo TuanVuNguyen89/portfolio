@@ -12,9 +12,7 @@ export default function Hero({ profile }: { profile: Profile }) {
 
   useEffect(() => {
     const handleTyping = () => {
-      const i = loopNum % 2; // Toggle between typing and deleting if we had multiple texts, but here simple
-      // For now just type out once or loop a few roles if we had an array.
-      // Let's keep it simple: Type out tagline.
+      // Type out tagline with typing effect
       
       const isFullText = text === fullText;
       const isEmpty = text === '';

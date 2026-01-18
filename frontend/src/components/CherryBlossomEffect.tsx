@@ -16,7 +16,7 @@ interface Petal {
 export default function CherryBlossomEffect() {
   const [petals, setPetals] = useState<Petal[]>([]);
   const petalIdRef = useRef(0);
-  const throttleRef = useRef<NodeJS.Timeout | null>(null);
+  const throttleRef = useRef<number | null>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
