@@ -79,7 +79,7 @@ export default function Hero({ profile }: { profile: Profile }) {
                 </motion.h1>
 
                 <h2 className="tagline" style={{ minHeight: '1.5em' }}>
-                    {text}<span className="cursor">|</span>
+                    <span className="terminal-prompt">$&gt;</span> {text}<span className="cursor">|</span>
                 </h2>
 
                 <motion.p 
