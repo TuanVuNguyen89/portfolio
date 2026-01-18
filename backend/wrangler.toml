@@ -1,0 +1,12 @@
+name = "portfolio-backend"
+compatibility_date = "2024-11-06"
+compatibility_flags = [ "nodejs_compat" ]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "portfolio-db"
+database_id = "a5d9b259-74fd-450d-9af7-750d2e58e593"
+migrations_dir = "drizzle"
+
+[observability]
+enabled = true
