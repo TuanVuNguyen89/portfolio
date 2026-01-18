@@ -35,6 +35,22 @@ body {
   flex-direction: column;
 }
 
+.input-field {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: inherit;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+
 .main-content {
   flex: 1;
   padding-bottom: 4rem;

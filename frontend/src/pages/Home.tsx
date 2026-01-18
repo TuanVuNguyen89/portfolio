@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { fetchProfile } from '../lib/api'
+import { fetchProfile, fetchSkills, fetchProjects, fetchExperience } from '../lib/api'
 import Hero from '../components/Hero'
 import Experience from '../components/Experience'
 import Projects from '../components/Projects'
@@ -10,16 +10,26 @@ export default function Home() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetchProfile()
-      .then(setData)
-      .catch((err) => {
+    const loadData = async () => {
+      try {
+        const [profile, skills, experiences, projects] = await Promise.all([
+          fetchProfile(),
+          fetchSkills(),
+          fetchExperience(),
+          fetchProjects()
+        ]);
+        setData({ profile, skills, experiences, projects });
+      } catch (err) {
         console.error(err);
-      })
-      .finally(() => setLoading(false))
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
   }, [])
 
   if (loading) return <div className="loading-screen"><div className="loader"></div></div>
-  if (!data) return <div className="error-screen">Failed to load data. Please ensure backend is running.</div>
+  if (!data || !data.profile) return <div className="error-screen">Failed to load data. Please ensure backend is running.</div>
 
   const { profile, skills, experiences, projects } = data
 
