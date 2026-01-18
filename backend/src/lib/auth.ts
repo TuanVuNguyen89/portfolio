@@ -19,7 +19,11 @@ export const getAuth = (env: any) => {
     emailAndPassword: {
       enabled: true
     },
-    // Add other providers or plugins here
-    trustedOrigins: ["http://localhost:5173", "http://127.0.0.1:5173"] // Allow local dev
+    secret: env.BETTER_AUTH_SECRET,
+    trustedOrigins: [
+      "http://localhost:5173", 
+      "http://127.0.0.1:5173",
+      env.FRONTEND_URL // Add your production Cloudflare Pages URL here via env
+    ].filter(Boolean)
   });
 };
