@@ -11,3 +11,10 @@ migrations_dir = "drizzle"
 
 [observability]
 enabled = true
+
+[[routes]]
+pattern = "portfolio-api.ntuanvu89.id.vn"
+custom_domain = true
+
+[vars]
+FRONTEND_URL = "https://ntuanvu89.id.vn"
