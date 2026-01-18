@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OG Image Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+            background: #0a0e1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .og-image {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #0a0e1a 0%, #0d1117 100%);
+            border: 2px solid #00ff41;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+        }
+        
+        .og-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 65, 0.03) 2px,
+                    rgba(0, 255, 65, 0.03) 4px
+                );
+            pointer-events: none;
+        }
+        
+        .terminal-prompt {
+            color: #00ff41;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.8);
+        }
+        
+        .name {
+            color: #00ff41;
+            font-size: 72px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-shadow: 
+                0 0 10px rgba(0, 255, 65, 0.8),
+                0 0 20px rgba(0, 255, 65, 0.4);
+        }
+        
+        .tagline {
+            color: #00d9ff;
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .description {
+            color: #c9d1d9;
+            font-size: 24px;
+            text-align: center;
+            max-width: 900px;
+            line-height: 1.6;
+        }
+        
+        .decorative {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            color: #00d9ff;
+            font-size: 48px;
+            opacity: 0.3;
+        }
+        
+        .bottom-decoration {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            color: #00ff41;
+            font-size: 18px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="og-image">
+        <div class="decorative">&lt;/&gt;</div>
+        <div class="terminal-prompt">$&gt;</div>
+        <div class="name">Nguyen Tuan Vu</div>
+        <div class="tagline">Software Engineer</div>
+        <div class="description">
+            Fullstack Developer | Backend Systems | AI-Powered Applications
+        </div>
+        <div class="bottom-decoration">ntuanvu89.id.vn</div>
+    </div>
+    
+    <script>
+        // Instructions:
+        // 1. Open this file in a browser
+        // 2. Use browser DevTools to take a screenshot of the .og-image div
+        // 3. Or use a tool like html-to-image library to convert to PNG
+        // 4. Save as og-image.png in the public folder
+        // 5. Recommended size: 1200x630px (Open Graph standard)
+        
+        console.log('OG Image Template Loaded');
+        console.log('To generate image:');
+        console.log('1. Right-click on the preview');
+        console.log('2. Inspect element');
+        console.log('3. Use browser screenshot tools or extensions');
+        console.log('4. Or use html-to-image library programmatically');
+    </script>
+</body>
+</html>
