@@ -4,7 +4,12 @@ export type Profile = {
     name: string;
     tagline: string;
     summary: string;
-    // ... add more types as needed
+    avatarUrl?: string;
+    location?: string;
+    github?: string;
+    linkedin?: string;
+    email?: string;
+    website?: string;
 }
 
 export async function fetchProfile() {

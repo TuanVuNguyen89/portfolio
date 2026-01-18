@@ -8,7 +8,7 @@ INSERT INTO profile (name, tagline, summary, email, phone, location, linkedin, g
   'Ha Noi, Viet Nam',
   'https://linkedin.com/in/ntuanvu89',
   'https://github.com/TuanVuNguyen89',
-  '#'
+  'https://ntuanvu89.id.vn'
 );
 
 -- Skills

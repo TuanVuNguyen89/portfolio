@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
 import { fetchProfile } from './lib/api'
+import Hero from './components/Hero'
+import Experience from './components/Experience'
+import Projects from './components/Projects'
+import Skills from './components/Skills'
 import './index.css'
 
 function App() {
@@ -9,50 +13,31 @@ function App() {
   useEffect(() => {
     fetchProfile()
       .then(setData)
-      .catch(console.error)
+      .catch((err) => {
+        console.error(err);
+        // Fallback for demo if API fails locally
+        // setData(mockData) 
+      })
       .finally(() => setLoading(false))
   }, [])
 
-  if (loading) return <div>Loading...</div>
-  if (!data) return <div>Failed to load data</div>
+  if (loading) return <div className="loading-screen"><div className="loader"></div></div>
+  if (!data) return <div className="error-screen">Failed to load data. Please ensure backend is running.</div>
 
-  const { profile, experiences, projects } = data
+  const { profile, skills, experiences, projects } = data
 
   return (
-    <div className="container">
-      <header style={{ marginBottom: '4rem', textAlign: 'center' }}>
-        <h1 style={{ background: 'linear-gradient(to right, #fff, #666)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-          {profile.name}
-        </h1>
-        <p style={{ fontSize: '1.5rem', color: 'var(--text-secondary)' }}>{profile.tagline}</p>
-        <p style={{ maxWidth: '600px', margin: '1rem auto' }}>{profile.summary}</p>
-      </header>
-
-      <section className="grid">
-        <h2>Experience</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          {experiences.map((exp: any) => (
-            <div key={exp.id} className="card">
-              <h3>{exp.role} @ {exp.company}</h3>
-              <small>{exp.startDate} - {exp.endDate}</small>
-              <p style={{ whiteSpace: 'pre-line' }}>{exp.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section style={{ marginTop: '4rem' }}>
-        <h2>Projects</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem' }}>
-          {projects.map((proj: any) => (
-            <div key={proj.id} className="card">
-              <h3>{proj.title}</h3>
-              <p>{proj.description}</p>
-              <a href={proj.repoUrl} target="_blank" style={{ color: 'var(--accent)' }}>View Code</a>
-            </div>
-          ))}
-        </div>
-      </section>
+    <div className="app-container">
+      <main className="main-content">
+        <Hero profile={profile} />
+        <Skills skills={skills} />
+        <Experience experiences={experiences} />
+        <Projects projects={projects} />
+      </main>
+      
+      <footer className="footer">
+        <p>© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
+      </footer>
     </div>
   )
 }
