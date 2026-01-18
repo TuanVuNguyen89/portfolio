@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import React from 'react';
 
 export default function Education({ educations }: { educations: any[] }) {
   const parseAchievements = (achievements: string | null) => {
@@ -17,7 +18,7 @@ export default function Education({ educations }: { educations: any[] }) {
 
   const renderMarkdown = (text: string) => {
     // Parse markdown: **bold**, *italic*, `code`
-    const parts: (string | JSX.Element)[] = [];
+    const parts: React.ReactNode[] = [];
     let lastIndex = 0;
     let key = 0;
 
