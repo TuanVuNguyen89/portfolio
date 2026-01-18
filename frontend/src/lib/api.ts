@@ -10,6 +10,7 @@ export type Profile = {
     linkedin?: string;
     email?: string;
     website?: string;
+    resumeUrl?: string;
 }
 
 // Profile
@@ -122,5 +123,17 @@ export async function updateExperience(id: number, data: any) {
 export async function deleteExperience(id: number) {
   const res = await fetch(`${API_URL}/experience/${id}`, { method: 'DELETE', credentials: 'include' });
   if (!res.ok) throw new Error("Failed to delete experience");
+  return res.json();
+}
+
+// Messages
+export async function sendMessage(data: { name: string; email: string; message: string }) {
+  const res = await fetch(`${API_URL}/messages`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+    credentials: 'include'
+  });
+  if (!res.ok) throw new Error("Failed to send message");
   return res.json();
 }

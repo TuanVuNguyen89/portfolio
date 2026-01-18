@@ -94,8 +94,24 @@ export default function Hero({ profile }: { profile: Profile }) {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.7 }}
-                    style={{ marginTop: '2rem' }}
+                    style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center' }}
                 >
+                    {profile.resumeUrl && (
+                        <motion.a
+                            href={profile.resumeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="cv-button"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.9 }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            <span className="cv-button-icon">&gt;_</span>
+                            Check My CV
+                        </motion.a>
+                    )}
                     <SocialLinks profile={profile} />
                 </motion.div>
             </div>

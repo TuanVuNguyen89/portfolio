@@ -6,6 +6,7 @@ import Projects from '../components/Projects'
 import Skills from '../components/Skills'
 import CherryBlossomEffect from '../components/CherryBlossomEffect'
 import BackgroundVisuals from '../components/BackgroundVisuals'
+import ContactForm from '../components/ContactForm'
 
 export default function Home() {
   const [data, setData] = useState<any>(null)
@@ -48,7 +49,8 @@ export default function Home() {
         </main>
         
         <footer className="footer">
-          <p>© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
+          <ContactForm />
+          <p className="footer-copyright">© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
         </footer>
       </div>
     </>
