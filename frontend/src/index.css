@@ -564,6 +564,181 @@ body::after {
   animation: none;
 }
 
+/* Cherry Blossom Petals Effect */
+.cherry-blossom-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.cherry-petal {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  transform-origin: center;
+}
+
+/* Cherry blossom petal shape using CSS */
+.cherry-petal::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(
+    ellipse at 50% 30%,
+    #ffc0cb 0%,
+    #ffb6c1 40%,
+    #ff91a4 70%,
+    #ff69b4 100%
+  );
+  border-radius: 50% 0 50% 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  opacity: 0.85;
+  box-shadow: 
+    0 0 8px rgba(255, 182, 193, 0.6),
+    0 0 4px rgba(255, 105, 180, 0.4),
+    inset -2px -2px 4px rgba(255, 192, 203, 0.3);
+  filter: drop-shadow(0 2px 3px rgba(220, 38, 38, 0.2));
+}
+
+/* Background Visuals - Subtle Hacker/Japanese Elements */
+.background-visuals {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-visual {
+  position: absolute;
+  color: var(--terminal-green);
+  opacity: 0.25;
+  transition: opacity 0.3s;
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+/* Mount Fuji - Bottom center/right */
+.mount-fuji {
+  bottom: 0;
+  right: 5%;
+  width: 500px;
+  height: 350px;
+  opacity: 0.2;
+  color: var(--japanese-red);
+  filter: drop-shadow(0 0 8px rgba(220, 38, 38, 0.4));
+}
+
+/* Virus Icons - Scattered */
+.virus-icon {
+  width: 80px;
+  height: 80px;
+  color: var(--terminal-cyan);
+  opacity: 0.3;
+  filter: drop-shadow(0 0 6px rgba(0, 217, 255, 0.5));
+}
+
+.virus-1 {
+  top: 15%;
+  left: 10%;
+  animation: float 20s ease-in-out infinite;
+}
+
+.virus-2 {
+  top: 60%;
+  right: 15%;
+  animation: float 25s ease-in-out infinite reverse;
+  animation-delay: -5s;
+}
+
+/* Malware Icons - Various positions */
+.malware-icon {
+  width: 72px;
+  height: 72px;
+  color: var(--terminal-green);
+  opacity: 0.3;
+  filter: drop-shadow(0 0 6px rgba(0, 255, 65, 0.5));
+}
+
+.malware-1 {
+  top: 30%;
+  right: 20%;
+  animation: float 18s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+.malware-2 {
+  bottom: 25%;
+  left: 8%;
+  animation: float 22s ease-in-out infinite reverse;
+}
+
+.malware-3 {
+  top: 70%;
+  left: 25%;
+  animation: float 24s ease-in-out infinite;
+  animation-delay: -8s;
+}
+
+/* Code Symbols - Minimal terminal style */
+.code-symbol {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  color: var(--terminal-cyan);
+  opacity: 0.25;
+  font-weight: 300;
+  filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.4));
+  text-shadow: 0 0 10px currentColor;
+}
+
+.code-1 {
+  top: 20%;
+  right: 30%;
+  animation: float 30s ease-in-out infinite;
+}
+
+.code-2 {
+  bottom: 30%;
+  right: 10%;
+  animation: float 28s ease-in-out infinite reverse;
+  animation-delay: -10s;
+}
+
+.code-3 {
+  top: 50%;
+  left: 15%;
+  animation: float 32s ease-in-out infinite;
+  animation-delay: -15s;
+}
+
+/* Subtle floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-5px);
+  }
+  75% {
+    transform: translateY(-15px) translateX(15px);
+  }
+}
+
 /* Skills - Terminal Badges */
 .skills-container {
   display: flex;

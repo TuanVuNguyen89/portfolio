@@ -4,6 +4,8 @@ import Hero from '../components/Hero'
 import Experience from '../components/Experience'
 import Projects from '../components/Projects'
 import Skills from '../components/Skills'
+import CherryBlossomEffect from '../components/CherryBlossomEffect'
+import BackgroundVisuals from '../components/BackgroundVisuals'
 
 export default function Home() {
   const [data, setData] = useState<any>(null)
@@ -34,17 +36,21 @@ export default function Home() {
   const { profile, skills, experiences, projects } = data
 
   return (
-    <div className="app-container">
-      <main className="main-content">
-        <Hero profile={profile} />
-        <Skills skills={skills} />
-        <Experience experiences={experiences} />
-        <Projects projects={projects} />
-      </main>
-      
-      <footer className="footer">
-        <p>© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
-      </footer>
-    </div>
+    <>
+      <BackgroundVisuals />
+      <CherryBlossomEffect />
+      <div className="app-container">
+        <main className="main-content">
+          <Hero profile={profile} />
+          <Skills skills={skills} />
+          <Experience experiences={experiences} />
+          <Projects projects={projects} />
+        </main>
+        
+        <footer className="footer">
+          <p>© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
+        </footer>
+      </div>
+    </>
   )
 }
