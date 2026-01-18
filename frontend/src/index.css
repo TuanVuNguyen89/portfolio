@@ -502,6 +502,7 @@ body::after {
   margin: 0.5rem 0;
   position: relative;
   padding-left: 1rem;
+  white-space: normal;
 }
 
 .exp-description p::before {

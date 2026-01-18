@@ -26,9 +26,24 @@ export default function Experience({ experiences }: { experiences: any[] }) {
               </div>
               <p className="exp-location">{exp.location}</p>
               <div className="exp-description">
-                 {exp.description.split('\n').map((line: string, i: number) => (
-                    <p key={i} style={{ margin: '0.25rem 0' }}>{line}</p>
-                 ))}
+                 {exp.description
+                   ? exp.description
+                       .split(/\r?\n/) // Handle both \n and \r\n
+                       .map((line: string) => line.trim())
+                       .filter((line: string) => line.length > 0)
+                       .map((line: string, i: number) => {
+                         // Remove markdown bullet points (-, *, •) and any leading whitespace
+                         let cleanedLine = line.trim();
+                         // Remove bullet markers with optional spaces (matches: "- ", "-", " * ", etc.)
+                         cleanedLine = cleanedLine.replace(/^[-*•]\s+/, '');
+                         cleanedLine = cleanedLine.replace(/^[-*•]/, ''); // Handle case without space
+                         cleanedLine = cleanedLine.trim();
+                         return cleanedLine ? (
+                           <p key={i} style={{ margin: '0.5rem 0' }}>{cleanedLine}</p>
+                         ) : null;
+                       })
+                       .filter(Boolean) // Remove any null entries
+                   : null}
               </div>
             </div>
           </motion.div>
