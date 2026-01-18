@@ -13,8 +13,9 @@ export type Profile = {
 }
 
 // Profile
+// Profile
 export async function fetchProfile() {
-  const res = await fetch(`${API_URL}/profile`);
+  const res = await fetch(`${API_URL}/profile`, { credentials: 'include' });
   if (!res.ok) throw new Error("Failed to fetch profile");
   return res.json();
 }
@@ -24,6 +25,7 @@ export async function updateProfile(data: Partial<Profile>) {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
+    credentials: 'include'
   });
   if (!res.ok) throw new Error("Failed to update profile");
   return res.json();
@@ -31,7 +33,7 @@ export async function updateProfile(data: Partial<Profile>) {
 
 // Skills
 export async function fetchSkills() {
-  const res = await fetch(`${API_URL}/skills`);
+  const res = await fetch(`${API_URL}/skills`, { credentials: 'include' });
   if (!res.ok) throw new Error("Failed to fetch skills");
   return res.json();
 }
@@ -41,20 +43,21 @@ export async function createSkill(data: any) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
+    credentials: 'include'
   });
   if (!res.ok) throw new Error("Failed to create skill");
   return res.json();
 }
 
 export async function deleteSkill(id: number) {
-  const res = await fetch(`${API_URL}/skills/${id}`, { method: 'DELETE' });
+  const res = await fetch(`${API_URL}/skills/${id}`, { method: 'DELETE', credentials: 'include' });
   if (!res.ok) throw new Error("Failed to delete skill");
   return res.json();
 }
 
 // Projects
 export async function fetchProjects() {
-  const res = await fetch(`${API_URL}/projects`);
+  const res = await fetch(`${API_URL}/projects`, { credentials: 'include' });
   if (!res.ok) throw new Error("Failed to fetch projects");
   return res.json();
 }
@@ -64,6 +67,7 @@ export async function createProject(data: any) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
+    credentials: 'include'
   });
   if (!res.ok) throw new Error("Failed to create project");
   return res.json();
@@ -74,20 +78,21 @@ export async function updateProject(id: number, data: any) {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
+    credentials: 'include'
   });
   if (!res.ok) throw new Error("Failed to update project");
   return res.json();
 }
 
 export async function deleteProject(id: number) {
-  const res = await fetch(`${API_URL}/projects/${id}`, { method: 'DELETE' });
+  const res = await fetch(`${API_URL}/projects/${id}`, { method: 'DELETE', credentials: 'include' });
   if (!res.ok) throw new Error("Failed to delete project");
   return res.json();
 }
 
 // Experience
 export async function fetchExperience() {
-  const res = await fetch(`${API_URL}/experience`);
+  const res = await fetch(`${API_URL}/experience`, { credentials: 'include' });
   if (!res.ok) throw new Error("Failed to fetch experience");
   return res.json();
 }
@@ -97,6 +102,7 @@ export async function createExperience(data: any) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
+    credentials: 'include'
   });
   if (!res.ok) throw new Error("Failed to create experience");
   return res.json();
@@ -107,13 +113,14 @@ export async function updateExperience(id: number, data: any) {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
+    credentials: 'include'
   });
   if (!res.ok) throw new Error("Failed to update experience");
   return res.json();
 }
 
 export async function deleteExperience(id: number) {
-  const res = await fetch(`${API_URL}/experience/${id}`, { method: 'DELETE' });
+  const res = await fetch(`${API_URL}/experience/${id}`, { method: 'DELETE', credentials: 'include' });
   if (!res.ok) throw new Error("Failed to delete experience");
   return res.json();
 }
