@@ -18,3 +18,4 @@ custom_domain = true
 
 [vars]
 FRONTEND_URL = "https://ntuanvu89.id.vn"
+BETTER_AUTH_SECRET = "your_secret_key"
