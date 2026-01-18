@@ -5,10 +5,12 @@ import profileRoute from './routes/profile'
 import skillsRoute from './routes/skills'
 import projectsRoute from './routes/projects'
 import experienceRoute from './routes/experience'
+import messagesRoute from './routes/messages'
 
 type Bindings = {
   DB: D1Database
   FRONTEND_URL: string
+  RESEND_API_KEY?: string
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
@@ -25,6 +27,7 @@ app.route('/api/profile', profileRoute)
 app.route('/api/skills', skillsRoute)
 app.route('/api/projects', projectsRoute)
 app.route('/api/experience', experienceRoute)
+app.route('/api/messages', messagesRoute)
 
 app.on(['POST', 'GET'], '/api/auth/*', (c) => {
   const auth = getAuth(c.env)
